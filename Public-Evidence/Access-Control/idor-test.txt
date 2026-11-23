@@ -1,0 +1,28 @@
+Vulnerability: Insecure Direct Object Reference (IDOR)
+Application: OWASP Juice Shop
+Target: http://127.0.0.1:3000
+
+Test Account:
+Role: Customer
+User ID: 2
+Account email: [REDACTED]
+
+Test 1:
+Endpoint: GET /api/Users/3
+Result: HTTP 200 OK
+Observation: Customer account accessed another customer's record.
+
+Test 2:
+Endpoint: GET /api/Users/1
+Result: HTTP 200 OK
+Observation: Customer account accessed an administrator's record.
+
+Conclusion:
+The API returned other users' records to an authenticated customer.
+This indicates a missing object-level authorization check.
+
+Recommendation:
+Enforce server-side authorization for every user record.
+Users should only access resources they are authorized to view.
+
+Testing was performed in a local OWASP Juice Shop lab.

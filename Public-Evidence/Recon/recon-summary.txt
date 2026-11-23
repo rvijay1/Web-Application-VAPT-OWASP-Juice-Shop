@@ -1,0 +1,44 @@
+Vulnerability Assessment and Penetration Testing
+Reconnaissance Evidence
+
+Application: OWASP Juice Shop
+Target: http://127.0.0.1:3000
+Environment: Local Kali Linux and Docker lab
+
+Tools used:
+1. WhatWeb
+2. cURL
+3. Nmap
+4. Browser Developer Tools
+
+Observations:
+
+1. Application Identification:
+   WhatWeb identified the application as OWASP Juice Shop.
+
+2. HTTP Response:
+   The homepage returned HTTP 200 OK.
+
+3. Technology Discovery:
+   Frontend JavaScript files identified:
+   - polyfills.js
+   - scripts.js
+   - main.js
+
+4. API Discovery:
+   JavaScript inspection revealed API endpoint references,
+   including /api/Users, /api/Products and /api/BasketItems.
+
+5. Robots.txt:
+   The file contained Disallow: /ftp.
+   This does not enforce access restrictions.
+
+6. Directory Discovery:
+   The /ftp/ directory was publicly accessible.
+
+Note:
+These are reconnaissance observations.
+They are not all independent security vulnerabilities.
+
+All testing was performed against a locally hosted
+OWASP Juice Shop lab application.

@@ -1,0 +1,14 @@
+# Keep original, potentially sensitive evidence private
+Evidence/
+
+# Ignore local secrets and temporary files
+*.kdbx
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.tmp
+*.swp
+*~

@@ -1,0 +1,38 @@
+Vulnerability: Public Exposure of KeePass Database
+Application: OWASP Juice Shop
+Target: http://127.0.0.1:3000
+
+Affected endpoint:
+/ftp/incident-support.kdbx
+
+Test:
+Downloaded the database without authentication using HTTP GET.
+
+HTTP Response:
+200 OK
+
+File Identification:
+KeePass password database 2.x (KDBX)
+
+Validation:
+SHA-256 hash of the HTTP-downloaded file matched
+the original database file.
+
+Result:
+The complete encrypted database file was publicly
+downloadable without authentication.
+
+Limitation:
+The database password was not recovered.
+Its stored contents were not accessed.
+
+Impact:
+An attacker could obtain the encrypted database and
+attempt offline password attacks.
+
+Recommendation:
+Remove sensitive database files from public web directories.
+Restrict access through authentication and authorization.
+Rotate potentially exposed credentials if compromise is suspected.
+
+Testing was performed in a local OWASP Juice Shop lab.

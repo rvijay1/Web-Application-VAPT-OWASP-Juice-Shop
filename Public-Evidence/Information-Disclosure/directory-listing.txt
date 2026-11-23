@@ -1,0 +1,36 @@
+Finding: Public Directory Listing
+Application: OWASP Juice Shop
+Target: http://127.0.0.1:3000
+
+Affected endpoint:
+/ftp/
+
+Test:
+Accessed the FTP directory using an HTTP GET request
+without authentication.
+
+Result:
+The directory listing was publicly accessible.
+
+Information exposed:
+- File names
+- File sizes
+- Modification timestamps
+- Quarantine directory contents
+- Shortcut files containing external URLs
+
+Additional observation:
+robots.txt contains Disallow: /ftp.
+However, robots.txt does not restrict access to the directory.
+
+Impact:
+An attacker may discover files and information that
+could help identify further security weaknesses.
+
+Recommendation:
+Disable public directory listing.
+Remove sensitive files from public directories.
+Apply proper server-side access controls.
+Do not rely on robots.txt for security.
+
+Testing was performed in a local OWASP Juice Shop lab.
